@@ -1,0 +1,10 @@
+
+{:paths ["."]
+ :deps {org.babashka/cli {:mvn/version "0.4.39"}}
+ :tasks
+ {:requires ([babashka.fs :as fs]
+             [runner :as runner])
+  download (do (println "Downloading input")
+               (runner/download-runner *command-line-args*))
+  solution (do (println "Running solution")
+               (runner/solution-runner *command-line-args*))}}

@@ -1,0 +1,18 @@
+output.txt
+
+# Used for setup.js
+config.json
+
+# JavaScript
+npm-debug.log*
+node_modules
+
+# Haskell
+*.exe
+*.hi
+*.o
+
+# Clojure
+.calva
+.clj-kondo
+.lsp
