@@ -1,6 +1,6 @@
 (require '[clojure.string :as str])
 
-(def input-raw (slurp "./2023/03-10/input.txt"))
+(def input-raw (slurp (str/replace *file* #"main.clj" "input.txt")))
 #_(def input-raw "
 1 1 6 4
 2 2 5 2
