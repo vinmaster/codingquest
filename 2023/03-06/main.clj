@@ -1,8 +1,6 @@
-(require '[clojure.string :as str]
-         #_'[babashka.process :refer [shell sh process check]])
+(require '[clojure.string :as str])
 
 (def input-raw (slurp "./2023/03-06/input.txt"))
-
 #_(def input-raw "
 ed669507-8122-4f78-bc59-e1c6518aa3f1 62686 Fuel
 707ff3b1-9b0c-4c43-a495-47af7970486f 45574 Food

@@ -7,7 +7,6 @@
 (require '[clojure.java.io :as io])
 (require '[babashka.cli :as cli])
 (require '[babashka.fs :as fs])
-;; (require '[babashka.process :refer [shell sh process check]])
 (require '[babashka.process :as process])
 (require '[clojure.string :as str])
 ;; (require '[cheshire.core :as json])
@@ -42,11 +41,9 @@
   ([] (solution-runner *command-line-args*))
   ([args]
    (when (empty? args) (throw (Exception. "Error: No args given")))
-  ;;  (prn "Arguments given:" args)
    (let [{year :year date :date} (parse-args-solution args)
          path (format path-template year date)]
-    ;;  (process/sh "bb ./2023/03-07/main.clj")
-     (-> (process/sh "bb" (str path "/main.clj"))
+     (-> (process/sh (str "bb " path "/main.clj"))
          (#(do (print (:out %))
                (when (not= (:exit %) 0) (print (:err %)))))))))
 
