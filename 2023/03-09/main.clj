@@ -28,12 +28,18 @@
        str/trim
        str/split-lines
        (map (fn [s]
-              (vec->map
-               (zip-vecs
-                (map first structure)
-                (->> (map second structure)
-                     create-chunks
-                     (chunk-str s))))))))
+              (apply hash-map
+                     (interleave
+                      (map first structure)
+                      (->> (map second structure)
+                           create-chunks
+                           (chunk-str s))))
+              #_(vec->map
+                 (zip-vecs
+                  (map first structure)
+                  (->> (map second structure)
+                       create-chunks
+                       (chunk-str s))))))))
 
 (defn process [packets]
   (let [header-pred #(= (:header %) "5555")
