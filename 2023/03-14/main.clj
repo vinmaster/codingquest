@@ -74,9 +74,15 @@ DDDRRRDDLLLDRRRRRRRDD
               (update :move-index inc)
               (update :score inc)))))))
 
-(print-state
- (loop [state state]
-   (let [new-state (move-snake state)]
-     (if (:game-over new-state)
-       new-state
-       (recur new-state)))))
+#_(print-state
+   (loop [state state]
+     (let [new-state (move-snake state)]
+       (if (:game-over new-state)
+         new-state
+         (recur new-state)))))
+
+(->> state
+     (iterate move-snake)
+     (drop-while (complement :game-over))
+     first
+     print-state)
